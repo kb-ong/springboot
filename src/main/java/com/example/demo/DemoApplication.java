@@ -7,10 +7,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public void demoFunc1(){
-		int x=1;
+		int total=0;
+		for(int i=1;i<=10;i++){
+			total+=i;
+		}
 	}
 	public void demoFunc2(){
-		int y=1;
+		int total=0;
+		for(int i=1;i<=10;i++){
+			total+=i;
+		}
 	}
 
 	public static void main(String[] args) {
