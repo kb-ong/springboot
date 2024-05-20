@@ -16,12 +16,9 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
-		<sonar.test.exclusions>
-			src/test/**/*.*
-		</sonar.test.exclusions>
-		<sonar.coverage.exclusions>
-			src/test/**/*.*
-		</sonar.coverage.exclusions>
+		<sonar.sources>src</sonar.sources>
+		<sonar.tests>src/test</sonar.tests>
+		<sonar.exclusions>src/test</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
