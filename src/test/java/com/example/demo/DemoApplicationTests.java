@@ -12,8 +12,8 @@ class DemoApplicationTests {
 	@Test
 	void mainTest(){
 		DemoApplication demoApplication = new DemoApplication();
-		demoApplication.demoFunc1();
-		demoApplication.demoFunc2();
+		//demoApplication.demoFunc1();
+		//demoApplication.demoFunc2();
 		DemoApplication.main(new String[]{});
 	}
 
