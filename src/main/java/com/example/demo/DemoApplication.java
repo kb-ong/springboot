@@ -7,14 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public void demoFunc1(){
-		System.out.println("----------------------demoFunc1----------------------------");
+		int x=1;
 	}
 	public void demoFunc2(){
-		System.out.println("----------------------demoFunc2----------------------------");
+		int y=1;
 	}
 
 	public static void main(String[] args) {
-		System.out.println("----------------------main----------------------------");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 

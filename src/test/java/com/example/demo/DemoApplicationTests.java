@@ -9,15 +9,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 class DemoApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
-
 	@Test
 	void mainTest(){
 		DemoApplication demoApplication = new DemoApplication();
 		demoApplication.demoFunc1();
 		demoApplication.demoFunc2();
+		DemoApplication.main(new String[]{});
 	}
 
 }
