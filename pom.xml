@@ -44,6 +44,14 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+			<repository>
+				<id>nexus-artifactory-1</id>
+				<name>maven-releases</name>
+				<url>http://13.210.246.63:8083/repository/maven-releases/</url>
+			</repository>
+	</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
