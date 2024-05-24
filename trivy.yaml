@@ -1,0 +1,27 @@
+timeout: 10m
+format: json
+dependency-tree: true
+list-all-pkgs: true
+exit-code: 0
+output: trivy.json
+severity:
+  - MEDIUM
+  - HIGH
+  - CRITICAL
+  - LOW
+scan:
+  skip-dirs:
+    - /lib64
+    - /lib
+    - /usr/lib
+    - /usr/include
+  security-checks:
+    - vuln
+    - secret
+vulnerability:
+  type:
+    - os
+    - library
+  ignore-unfixed: true
+db:
+  skip-update: false
