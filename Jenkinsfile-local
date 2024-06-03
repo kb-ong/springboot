@@ -48,7 +48,7 @@ pipeline{
         stage('Publish Artifact') {
           steps {           
             withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn deploy'
+              sh 'mvn deploy -DskipTests'
             }
           }
         }
