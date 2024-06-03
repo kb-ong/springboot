@@ -23,6 +23,9 @@ pipeline{
 		stage('testing') {
           steps {           
             sh 'docker --version'
+			sh 'java -version'
+			sh 'dotnet --version'
+			sh 'mvn --version'
           }
         }	 
 	 }
