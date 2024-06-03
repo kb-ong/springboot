@@ -1,10 +1,10 @@
 pipeline{
-    //agent {
-    //    node {
-    //        label 'selfhosted-k8s'
-    //    }
-    //}
-	agent any
+    agent {
+        node {
+            label 'selfhosted-k8s'
+        }
+    }
+	//agent any
     tools {
          dockerTool 'docker261'
          maven 'maven397' 
@@ -43,8 +43,8 @@ pipeline{
           }
         }
         stage('Build image') {
-          steps {           
-            script{                
+          steps {
+            script{
                 withDockerRegistry(credentialsId: 'docker-token', toolName: 'docker', url: '') {
                     //dockerImage = docker.build(registry + ":latest" , "src/main/resources")
                     dockerImage = docker.build registry + ":latest"
