@@ -23,7 +23,7 @@ pipeline{
      stages{
         stage('Compiling') {
           steps {           
-            withMaven(globalMavenSettingsConfig: 'maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
+            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
               sh 'mvn clean compile'
             }
           }
