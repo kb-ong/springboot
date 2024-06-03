@@ -21,37 +21,7 @@ pipeline{
     }    
 
      stages{
-        stage('Packaging') {
-          steps {           
-            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn package -DskipTests'
-            }
-          }
-        }
-        stage('Build image') {
-          steps {
-			script {
-				dockerImage = docker.build "${DOCKER_IMAGE_NAME}"
-			}				
-          }
-        }
 
-        stage('Push image') {
-          steps {
-            script{                
-                withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker261', url: '') {                    
-                    dockerImage.push()
-                }
-            }
-          }
-        }
-        stage('Publish Artifact') {
-          steps {           
-            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn deploy -DskipTests'
-            }
-          }
-        }
         stage('Deploying image to k8s') {
           steps {
               withKubeConfig(credentialsId: 'k8s-deployer-token', clusterName: 'kubernetes-admin@kubernetes', contextName: 'kubernetes-admin@kubernetes', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://172.27.210.223:6443') {
