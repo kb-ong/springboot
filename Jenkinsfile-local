@@ -45,7 +45,7 @@ pipeline{
         stage('Build image') {
           steps {
             script{
-                withDockerRegistry(credentialsId: 'docker-token', toolName: 'docker', url: '') {
+                withDockerRegistry(credentialsId: 'docker-token', toolName: 'docker261', url: '') {
                     //dockerImage = docker.build(registry + ":latest" , "src/main/resources")
                     dockerImage = docker.build registry + ":latest"
                 }
@@ -72,7 +72,7 @@ pipeline{
         stage('Push image') {
           steps {           
             script{                
-                withDockerRegistry(credentialsId: 'docker-token', toolName: 'docker', url: '') {                    
+                withDockerRegistry(credentialsId: 'docker-token', toolName: 'docker261', url: '') {                    
                     dockerImage.push()
                 }
             }
