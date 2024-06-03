@@ -38,8 +38,10 @@ pipeline{
 
         stage('Push image') {
           steps {
-			withCredentials([string(credentialsId: 'docker-token', variable: 'docker-token')]) {
-			   dockerImage.push()
+			script {
+				withCredentials([string(credentialsId: 'docker-token', variable: 'docker-token')]) {
+				   dockerImage.push()
+				}
 			}
           }
         }
