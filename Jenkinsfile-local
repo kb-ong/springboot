@@ -56,7 +56,7 @@ pipeline{
               //sh 'trivy image --reset'
               //sh 'trivy image rootfs --debug --scanners vuln --no-progress --exit-code 1 --severity CRITICAL --format template --template "@./html.tpl" -o trivy.html riko20xx/springboot'
               //sh 'trivy image --debug --scanners vuln --no-progress --exit-code 1 --severity CRITICAL -o trivy.txt riko20xx/springboot'
-              sh 'trivy image --debug --scanners vuln --timeout 30m --no-progress -o trivy.txt ${registry}:latest'
+              sh 'trivy image --debug --scanners vuln --timeout 30m --no-progress -o trivy.txt ${DOCKER_IMAGE_NAME}'
            }
         }
         stage('SonarQube Analysis') {
