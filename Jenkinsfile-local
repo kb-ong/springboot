@@ -19,7 +19,12 @@ pipeline{
         DOCKER_CREDS = credentials('docker-token')       
     }    
 
-     stages{       
+     stages{
+		stage('testing') {
+          steps {           
+            sh 'echo hello'
+          }
+        }	 
 	 }
 
 }
