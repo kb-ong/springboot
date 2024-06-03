@@ -25,9 +25,9 @@ pipeline{
         stage('Deploying image to k8s') {
           steps {
               withKubeConfig(credentialsId: 'k8s-deployer-token', clusterName: 'kubernetes-admin@kubernetes', contextName: 'kubernetes-admin@kubernetes', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://172.27.210.223:6443') {
-                 //sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
-                 //sh 'chmod u+x ./kubectl'
-                 sh '/usr/bin/kubectl apply -f deployment.yaml -n devops-tools'
+                 sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
+                 sh 'chmod u+x ./kubectl'
+                 sh './kubectl apply -f deployment.yaml -n devops-tools'
               }
           }
         }        
