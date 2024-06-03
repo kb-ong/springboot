@@ -16,7 +16,8 @@ pipeline{
         registry = "riko20xx/springboot"
         dockerImage = ""
         DOCKER_HOST = "tcp://172.17.0.2:2375"
-        DOCKER_CREDS = credentials('docker-token')       
+        DOCKER_CREDS = credentials('docker-token')
+        DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1		
     }    
 
      stages{
