@@ -1,10 +1,10 @@
 pipeline{
-    agent {
-        node {
-            label 'selfhosted-k8s'
-        }
-    }
-	//agent any
+    //agent {
+    //    node {
+    //        label 'selfhosted-k8s'
+    //    }
+    //}
+	agent any
     tools {
          dockerTool 'docker261'
          maven 'maven397' 
@@ -38,11 +38,11 @@ pipeline{
 
         stage('Push image') {
           steps {
-			script {
-				withCredentials([string(credentialsId: 'docker-token', variable: 'docker-token')]) {
-				   dockerImage.push()
-				}
-			}
+            script{                
+                withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker261', url: '') {                    
+                    dockerImage.push()
+                }
+            }
           }
         }
         stage('Publish Artifact') {
