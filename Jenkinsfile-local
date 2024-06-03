@@ -6,7 +6,7 @@ pipeline{
     //}
 	agent any
     tools {
-         dockerTool 'docker261'
+         dockerTool 'docker'
          maven 'maven397' 
          jdk 'openjdk22'
          git 'git'
