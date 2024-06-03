@@ -49,16 +49,7 @@ pipeline{
 			}				
           }
         }
-        stage('Trivy Scanning') {
-           steps {
-              sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh |sh -s -- -b /usr/local/bin v0.51.2'
-              //sh 'trivy image --format template --template "@./html.tpl" --output trivy-fs-report.html ${registry}:latest'
-              //sh 'trivy image --reset'
-              //sh 'trivy image rootfs --debug --scanners vuln --no-progress --exit-code 1 --severity CRITICAL --format template --template "@./html.tpl" -o trivy.html riko20xx/springboot'
-              //sh 'trivy image --debug --scanners vuln --no-progress --exit-code 1 --severity CRITICAL -o trivy.txt riko20xx/springboot'
-              sh 'trivy image --debug --scanners vuln --timeout 30m --no-progress -o trivy.txt ${DOCKER_IMAGE_NAME}'
-           }
-        }
+
         stage('SonarQube Analysis') {
           steps {           
             withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
