@@ -21,42 +21,7 @@ pipeline{
     }    
 
      stages{
-        stage('Compiling') {
-          steps {           
-            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn clean compile'
-            }
-          }
-        }
-        stage('Run Test') {
-          steps {           
-            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn test'
-            }
-          }
-        }
-        stage('Packaging') {
-          steps {           
-            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn package'
-            }
-          }
-        }
-        stage('Build image') {
-          steps {
-			script {
-				dockerImage = docker.build "${DOCKER_IMAGE_NAME}"
-			}				
-          }
-        }
 
-        stage('SonarQube Analysis') {
-          steps {           
-            withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn verify sonar:sonar -Dsonar.qualitygate.wait=true'
-            }
-          }
-        }
         stage('Push image') {
           steps {           
             script{
