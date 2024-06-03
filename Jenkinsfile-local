@@ -23,7 +23,7 @@ pipeline{
      stages{
         stage('Compiling') {
           steps {           
-           sh 'docker --version'
+           sh 'docker images'
           }
         }        
     }
