@@ -30,20 +30,19 @@ pipeline{
         }
         stage('Build image') {
           steps {
-			withCredentials([string(credentialsId: 'docker-token', variable: 'docker-token')]) {
+			script {
 				dockerImage = docker.build "${DOCKER_IMAGE_NAME}"
 			}				
           }
         }
+
         stage('Push image') {
-          steps {           
-            script{
-			   //app.push("${env.BUILD_NUMBER}")
-			   //app.push("latest")     
-               dockerImage.push()
-            }
+          steps {
+			withCredentials([string(credentialsId: 'docker-token', variable: 'docker-token')]) {
+			   dockerImage.push()
+			}
           }
-        }    
+        }
         stage('Publish Artifact') {
           steps {           
             withMaven(globalMavenSettingsConfig: 'global-maven-setting', jdk: 'openjdk22', maven: 'maven397', mavenSettingsConfig: '', traceability: true) {
