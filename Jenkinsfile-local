@@ -21,14 +21,13 @@ pipeline{
     }    
 
      stages{
-		stage('testing') {
+        stage('Compiling') {
           steps {           
-            sh 'docker --version'
-			sh 'java -version'
-			sh 'dotnet --version'
-			sh 'mvn --version'
+            withMaven(globalMavenSettingsConfig: 'maven-setting', jdk: 'JDK22', maven: 'Maven.3.9.6', mavenSettingsConfig: '', traceability: true) {
+              sh 'mvn clean compile'
+            }
           }
-        }	 
+        } 
 	 }
 
 }
