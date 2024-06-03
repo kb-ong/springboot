@@ -1,11 +1,17 @@
 pipeline{
-    agent {
-        node {
-            label 'selfhosted-k8s'
-        }
+    //agent {
+    //    node {
+    //        label 'selfhosted-k8s'
+    //    }
+    //}
+	agent any
+    tools {
+         dockerTool 'docker261'
+         maven 'maven397' 
+         jdk 'openjdk22'
+         git 'git'
+         dotnetsdk 'dotnetsdk'
     }
-	//agent any
-   
     environment {
         DOCKER_IMAGE_NAME = "riko20xx/springboot:latest"
         DOCKER_IMAGE = ""
@@ -17,9 +23,9 @@ pipeline{
      stages{
         stage('Compiling') {
           steps {
-			script{
-				sh 'echo ${DOCKER_IMAGE_NAME}'
-				}
+			
+			docker.build ${DOCKER_IMAGE_NAME}
+				
           }
         }
 	}	
