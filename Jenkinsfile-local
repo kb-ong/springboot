@@ -5,13 +5,7 @@ pipeline{
         }
     }
 	//agent any
-    tools {
-         dockerTool 'docker261'
-         maven 'maven397' 
-         jdk 'openjdk22'
-         git 'git'
-         dotnetsdk 'dotnetsdk'
-    }
+   
     environment {
         DOCKER_IMAGE_NAME = "riko20xx/springboot:latest"
         DOCKER_IMAGE = ""
@@ -22,8 +16,10 @@ pipeline{
 
      stages{
         stage('Compiling') {
-          steps {           
-            sh '${DOCKER_IMAGE_NAME}'
+          steps {
+			script{
+				sh 'echo ${DOCKER_IMAGE_NAME}'
+				}
           }
         }
 	}	
