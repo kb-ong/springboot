@@ -10,7 +10,7 @@ pipeline{
          maven 'maven397' 
          jdk 'openjdk22'
          git 'git'
-         dotnetsdk 'dotnetsdk'
+         //dotnetsdk 'dotnetsdk'
     }
     environment {
         DOCKER_IMAGE_NAME = "riko20xx/springboot:latest"
