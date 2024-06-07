@@ -11,7 +11,6 @@ pipeline{
          jdk 'openjdk22'
          git 'git'
          //dotnetsdk 'dotnetsdk'
-//testing
     }
     environment {
         DOCKER_IMAGE_NAME = "riko20xx/springboot:latest"
